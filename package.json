@@ -1,0 +1,41 @@
+{
+  "name": "nixemon",
+  "version": "1.0.0",
+  "description": "Nixemon is a discord bot",
+  "main": "dist/index.js",
+  "scripts": {
+    "watch": "tsc --watch",
+    "dev": "nodemon ./src/index.js",
+    "serve": "node ./src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aomineDev/nixemon.git"
+  },
+  "keywords": [
+    "nixemon",
+    "pokemon",
+    "discord",
+    "bot"
+  ],
+  "author": "aomine Dev <aomine1745@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aomineDev/nixe/issues"
+  },
+  "homepage": "https://github.com/aomineDev/nixe#readme",
+  "dependencies": {
+    "discord.js": "12.5.1",
+    "dotenv": "8.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^14.14.24",
+    "@typescript-eslint/eslint-plugin": "4.14.2",
+    "eslint": "7.19.0",
+    "eslint-config-standard-with-typescript": "20.0.0",
+    "eslint-plugin-import": "2.22.1",
+    "eslint-plugin-node": "11.1.0",
+    "eslint-plugin-promise": "4.2.1",
+    "typescript": "4.1.3"
+  }
+}
