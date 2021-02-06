@@ -4,6 +4,7 @@
     "project": "./tsconfig.json"
   },
   "rules": {
-    "no-void": "off"
+    "no-void": "off",
+    "@typescript-eslint/no-var-requires": "off"
   }
 }
