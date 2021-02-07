@@ -9,7 +9,7 @@ const pokemonService: PokemonService = new PokemonService()
 export default class Pokedex implements Command {
   name: string = 'pokedex'
   aliases: string[] = ['p', 'pk', 'pkx']
-  description: string = 'spawn a pokemon!'
+  description: string = 'check the information of any existing pokémon!'
   args: boolean = true
   usage: string = '[pokemon name]'
   guildOnly: boolean = true

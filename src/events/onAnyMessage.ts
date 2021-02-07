@@ -10,7 +10,7 @@ export default async function onAnyMessage (message: Message): Promise<void> {
 
   const probability: number = Math.floor(Math.random() * 300) + 1
   const pokemonNumber: number = Math.floor(Math.random() * 898) + 1
-
+  console.log(probability)
   if (probability >= 30) return
 
   try {
