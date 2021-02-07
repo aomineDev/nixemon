@@ -3,15 +3,23 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 interface Config {
-  token: string
-  prefix: string
-  pokeapi: string
+  bot: {
+    token: string
+    prefix: string
+  }
+  pokeapi: {
+    apiURL: string
+  }
 }
 
 const config: Config = {
-  token: process.env.TOKEN === undefined ? '' : process.env.TOKEN,
-  prefix: process.env.PREFIX === undefined ? '' : process.env.PREFIX,
-  pokeapi: 'https://pokeapi.co/api/v2/'
+  bot: {
+    prefix: process.env.PREFIX === undefined ? '' : process.env.PREFIX,
+    token: process.env.TOKEN === undefined ? '' : process.env.TOKEN
+  },
+  pokeapi: {
+    apiURL: 'https://pokeapi.co/api/v2/'
+  }
 }
 
 export default config

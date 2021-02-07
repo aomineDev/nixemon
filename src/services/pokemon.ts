@@ -1,16 +1,20 @@
 import config from '../config'
 import axios from 'axios'
 
+const { pokeapi: { apiURL } } = config
+
 export default class PokemonService {
   private readonly service: string
   private readonly apiURL: string
 
   constructor () {
     this.service = 'pokemon'
-    this.apiURL = config.pokeapi
+    this.apiURL = apiURL
   }
 
-  public async get (pokemon: string): Promise<any> {
-    return await axios.get(`${this.apiURL}/${this.service}/${pokemon}`)
+  public async getPokemon (pokemon: string| number): Promise<any> {
+    const { data } = await axios.get(`${this.apiURL}/${this.service}/${pokemon}`)
+
+    return data
   }
 }

@@ -14,21 +14,20 @@ export default class Pokemon implements Command {
   usage: string = '[pokemon name]'
   guildOnly: boolean = true
 
-  execute (message: Message, args: string[]): void {
-    const pokemon = args[0]
+  async execute (message: Message, args: string[]): Promise<void> {
+    const pokemonName: string = args[0]
 
-    void pokemonService.get(pokemon)
-      .then(({ data }) => {
-        const name: string = data.name
-        const sprite: string = data.sprites.front_default
+    try {
+      const pokemon = await pokemonService.getPokemon(pokemonName)
+      const name: string = pokemon.name
+      const sprite: string = pokemon.sprites.front_default
 
-        const pokemonEmbed = new PokemonEmbed(name, sprite)
+      const pokemonEmbed = new PokemonEmbed(name, sprite)
 
-        void message.channel.send(pokemonEmbed)
-      })
-      .catch(err => {
-        console.error(err)
-        void message.channel.send('no pokemon has been found!')
-      })
+      void message.channel.send(pokemonEmbed)
+    } catch (err) {
+      console.error(err)
+      void message.channel.send('no pokemon has been found!')
+    }
   }
 }
