@@ -21,7 +21,7 @@ export default function onMessage (
 
   commands.forEach((value: Command): void => {
     if (value.aliases !== undefined) {
-      if (value.aliases?.includes(commandName) !== undefined) {
+      if (value.aliases.includes(commandName)) {
         command = value
       }
     }

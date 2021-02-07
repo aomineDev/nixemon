@@ -7,7 +7,8 @@
     "watch": "tsc -w",
     "dev": "nodemon ./dist/index.js",
     "serve": "node ./dist/index.js",
-    "postinstall": "tsc"
+    "postinstall": "tsc",
+    "deploy": "git cm 'deploy' && git push heroku main"
   },
   "repository": {
     "type": "git",

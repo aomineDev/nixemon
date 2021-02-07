@@ -12,8 +12,14 @@ export default class PokemonService {
     this.apiURL = apiURL
   }
 
-  public async getPokemon (pokemon: string| number): Promise<any> {
+  public async getPokemon (pokemon: string | number): Promise<any> {
     const { data } = await axios.get(`${this.apiURL}/${this.service}/${pokemon}`)
+
+    return data
+  }
+
+  public async getPokemonSpecies (pokemon: string | number): Promise<any> {
+    const { data } = await axios.get(`${this.apiURL}/${this.service}-species/${pokemon}`)
 
     return data
   }
