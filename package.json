@@ -4,9 +4,10 @@
   "description": "Nixemon is a discord bot",
   "main": "dist/index.js",
   "scripts": {
-    "watch": "tsc --watch",
+    "watch": "tsc -w",
     "dev": "nodemon ./dist/index.js",
-    "serve": "node ./dist/index.js"
+    "serve": "node ./dist/index.js",
+    "postinstall": "tsc"
   },
   "repository": {
     "type": "git",
