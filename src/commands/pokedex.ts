@@ -37,7 +37,7 @@ export default class Pokedex implements Command {
       })
 
       const pokemonSpecie: any = await pokemonService.getPokemonSpecies(pokemonName)
-      const flavor: any = pokemonSpecie.flavor_text_entries.find(({ version, language }: { version: any, language: any }) => version.name === 'moon' && language.name === 'es')
+      const flavor: any = pokemonSpecie.flavor_text_entries.find(({ language }: { language: any }) => language.name === 'es')
 
       const description: string = flavor.flavor_text
 
