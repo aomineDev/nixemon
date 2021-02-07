@@ -35,7 +35,7 @@ export default function onMessage (
   if (Boolean(command.args) && args.length === 0) {
     let reply = 'You didn\'t provide any argmuents'
 
-    if (typeof command.usage === 'string') {
+    if (command.usage !== undefined) {
       reply += `\nThe correct usage would be: \`${prefix}${command.name} ${command.usage}\``
     }
 
