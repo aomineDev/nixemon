@@ -1,7 +1,6 @@
 import { Client, Message } from 'discord.js'
 
 import commands, { Commands } from './commands/index'
-
 import onAnyMessage from './events/onAnyMessage'
 import onMessage from './events/onMessage'
 

@@ -1,6 +1,8 @@
 import { Message } from 'discord.js'
-import Command from '../interfaces/Command'
+
+import findCommandALias from '../utils/findCommandAlias'
 import { Commands } from '../commands/index'
+import Command from '../interfaces/Command'
 
 export default function onMessage (
   prefix: string,
@@ -17,22 +19,14 @@ export default function onMessage (
     return
   }
 
-  let command: Command | undefined = commands.get(commandName)
-
-  commands.forEach((value: Command): void => {
-    if (value.aliases !== undefined) {
-      if (value.aliases.includes(commandName)) {
-        command = value
-      }
-    }
-  })
+  const command: Command | undefined = commands.get(commandName) ?? findCommandALias(commandName, commands)
 
   if (command === undefined) {
     void message.channel.send('no command has been found!')
     return
   }
 
-  if (Boolean(command.args) && args.length === 0) {
+  if (command.args === true && args.length === 0) {
     let reply = 'You didn\'t provide any argmuents'
 
     if (command.usage !== undefined) {
@@ -43,7 +37,7 @@ export default function onMessage (
     return
   }
 
-  if (Boolean(command.guildOnly) && message.channel.type === 'dm') {
+  if (command.guildOnly === true && message.channel.type === 'dm') {
     void message.reply('I can\'t execute that command inside DMs!')
     return
   }

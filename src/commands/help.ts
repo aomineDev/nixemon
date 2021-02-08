@@ -1,5 +1,8 @@
 import { Message } from 'discord.js'
+
 import config from '../config'
+
+import findCommandALias from '../utils/findCommandAlias'
 import Command from '../interfaces/Command'
 import commands from './index'
 
@@ -36,15 +39,7 @@ export default class Help implements Command {
     } else {
       const commandName: string = args[0].toLowerCase()
 
-      let command: Command | undefined = commands.get(commandName)
-
-      commands.forEach((value: Command): void => {
-        if (value.aliases !== undefined) {
-          if (value.aliases.includes(commandName)) {
-            command = value
-          }
-        }
-      })
+      const command: Command | undefined = commands.get(commandName) ?? findCommandALias(commandName, commands)
 
       if (command === undefined) {
         void message.channel.send('that\'s not a valid command!')

@@ -1,8 +1,8 @@
 import { Message } from 'discord.js'
 
-import Command from '../interfaces/Command'
 import PokemonService from '../services/pokemon'
 import PokedexEmbed from '../embeds/pokedex'
+import Command from '../interfaces/Command'
 
 const pokemonService: PokemonService = new PokemonService()
 
@@ -19,8 +19,8 @@ export default class Pokedex implements Command {
 
     try {
       const pokemon: any = await pokemonService.getPokemon(pokemonName)
-      const name: string = pokemon.name
       const id: number = pokemon.id
+      const name: string = pokemon.name
       const sprite: string = pokemon.sprites.front_default
       const height: number = pokemon.height
       const weight: number = pokemon.weight
@@ -41,7 +41,7 @@ export default class Pokedex implements Command {
 
       const description: string = flavor.flavor_text
 
-      const pokedexEmbed = new PokedexEmbed(id, name, description, types, abilities, height, weight, sprite)
+      const pokedexEmbed: PokedexEmbed = new PokedexEmbed(id, name, description, types, abilities, height, weight, sprite)
 
       void message.channel.send(pokedexEmbed)
     } catch (err) {

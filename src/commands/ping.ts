@@ -1,4 +1,5 @@
 import { Message } from 'discord.js'
+
 import Command from '../interfaces/Command'
 
 export default class Ping implements Command {
