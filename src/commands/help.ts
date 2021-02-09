@@ -19,9 +19,8 @@ export default class Help implements Command {
 
     if (args.length === 0) {
       data.push('Here\'s a list of all my commands')
-      commands.forEach((value: Command, key: string): void => {
-        commandArr.push(key)
-      })
+
+      for (const key of commands.keys()) commandArr.push(key)
 
       data.push(commandArr.join(', '))
 
@@ -36,23 +35,25 @@ export default class Help implements Command {
           console.error(err)
           void message.reply('it seems like I can\'t Dm you! Do you have DMs disabled?')
         })
-    } else {
-      const commandName: string = args[0].toLowerCase()
 
-      const command: Command | undefined = commands.get(commandName) ?? findCommandALias(commandName, commands)
-
-      if (command === undefined) {
-        void message.channel.send('that\'s not a valid command!')
-        return
-      }
-
-      data.push(`**Name:** ${command.name}`)
-
-      if (command.aliases !== undefined) data.push(`**Aliases:** ${command.aliases.join(', ')}`)
-      if (command.description !== undefined) data.push(`**Description:** ${command.description}`)
-      if (command.usage !== undefined) data.push(`**Usage:** \`${prefix}${command.name} ${command.usage}\``)
-
-      void message.channel.send(data, { split: true })
+      return
     }
+
+    const commandName: string = args[0].toLowerCase()
+
+    const command: Command | undefined = commands.get(commandName) ?? findCommandALias(commandName, commands)
+
+    if (command === undefined) {
+      void message.channel.send('that\'s not a valid command!')
+      return
+    }
+
+    data.push(`**Name:** ${command.name}`)
+
+    if (command.aliases !== undefined) data.push(`**Aliases:** ${command.aliases.join(', ')}`)
+    if (command.description !== undefined) data.push(`**Description:** ${command.description}`)
+    if (command.usage !== undefined) data.push(`**Usage:** \`${prefix}${command.name} ${command.usage}\``)
+
+    void message.channel.send(data, { split: true })
   }
 }

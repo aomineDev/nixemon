@@ -8,10 +8,10 @@ const pokemonService = new PokemonService()
 export default async function onAnyMessage (message: Message): Promise<void> {
   if (message.author.bot) return
 
-  const probability: number = Math.floor(Math.random() * 300) + 1
+  const probability: number = Math.floor(Math.random() * 500) + 1
   const pokemonNumber: number = Math.floor(Math.random() * 898) + 1
 
-  if (probability >= 30) return
+  if (probability >= 50) return
 
   try {
     const pokemon: any = await pokemonService.getPokemon(pokemonNumber)

@@ -27,11 +27,6 @@ export default class PokedexEmbed extends MessageEmbed {
         inline: true
       },
       {
-        name: '\u200b',
-        value: '\u200b',
-        inline: false
-      },
-      {
         name: 'Habilities',
         value: abilities.join(' / '),
         inline: true
