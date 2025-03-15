@@ -18,7 +18,7 @@ export default class Bot {
   }
 
   public start (): void {
-    this.client.on('ready', (): void => console.log('nixemon is ready!'))
+    this.client.on('ready', (): void => console.log(`${this.client.user?.username ?? 'bot'} is ready!`))
 
     this.client.on('message', (message: Message): void => onMessage(this.prefix, message, this.commands))
 

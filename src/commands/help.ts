@@ -9,11 +9,12 @@ import commands from './index'
 const { bot: { prefix } } = config
 
 export default class Help implements Command {
-  name: string = 'help'
-  aliases: string[] = ['commands']
-  description: string = 'List all of my commands or info about a specific command'
-  usage: string = '[command name]'
-  execute (message: Message, args: string[]): void {
+  public readonly name: string = 'help'
+  public readonly aliases: string[] = ['commands']
+  public readonly description: string = 'List all of my commands or info about a specific command'
+  public readonly usage: string = '[command name]'
+
+  public execute (message: Message, args: string[]): void {
     const data: string[] = []
     const commandArr: string[] = []
 

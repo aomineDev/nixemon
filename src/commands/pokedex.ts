@@ -7,14 +7,14 @@ import Command from '../interfaces/Command'
 const pokemonService: PokemonService = new PokemonService()
 
 export default class Pokedex implements Command {
-  name: string = 'pokedex'
-  aliases: string[] = ['p', 'pk', 'pkx']
-  description: string = 'check the information of any existing pokémon!'
-  args: boolean = true
-  usage: string = '[pokemon name]'
-  guildOnly: boolean = true
+  public readonly name: string = 'pokedex'
+  public readonly aliases: string[] = ['p', 'pk', 'pkx']
+  public readonly description: string = 'check the information of any existing pokémon!'
+  public readonly args: boolean = true
+  public readonly usage: string = '[pokemon name]'
+  public readonly guildOnly: boolean = true
 
-  async execute (message: Message, args: string[]): Promise<void> {
+  public async execute (message: Message, args: string[]): Promise<void> {
     const pokemonName: string = args[0]
 
     try {

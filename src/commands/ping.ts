@@ -3,10 +3,10 @@ import { Message } from 'discord.js'
 import Command from '../interfaces/Command'
 
 export default class Ping implements Command {
-  name: string = 'ping'
-  description: string = 'Ping!'
+  public readonly name: string = 'ping'
+  public readonly description: string = 'Ping!'
 
-  execute (message: Message, args: string[]): void {
+  public execute (message: Message, args: string[]): void {
     void message.channel.send('🏓 Pong.')
   }
 }
